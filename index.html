@@ -8,7 +8,10 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="extras.js"></script>
+        <script src="js/extras.js"></script>
+        <script src="js/jquery-3.4.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/multi-select.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
 
     <body>
@@ -29,39 +32,39 @@
             <section class="principal" id="inserir">
                 <h2>Inserir</h2>
                 <fieldset>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3 ipt-nome">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Nome completo</span>
                         </div>
                         <input type="text" class="form-control asdf" placeholder="Digite o nome" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3 ipt-convenio">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect01">Convênio</label>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01">
                             <option selected>Selecione</option>
-                            <option value="industria">Indústria</option>
-                            <option value="comunidade">Comunidade</option>
+                            <option value="Indústria">Indústria</option>
+                            <option value="Comunidade">Comunidade</option>
                         </select>
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
+                    <div class="input-group mb-3 ipt-serie">
+                        <div class="input-group-prepend d-inline">
                             <label class="input-group-text" for="inputGroupSelect01">Ano/Série</label>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01">
                             <option selected>Selecione</option>
-                            <option value="1">1ª Série</option>
-                            <option value="2">2ª Série</option>
-                            <option value="3">3ª Série</option>
-                            <option value="6">6º Ano</option>
-                            <option value="7">7º Ano</option>
-                            <option value="8">8º Ano</option>
-                            <option value="9">9º Ano</option>
+                            <option value="1ª Série">1ª Série</option>
+                            <option value="2ª Série">2ª Série</option>
+                            <option value="3ª Série">3ª Série</option>
+                            <option value="6º Ano">6º Ano</option>
+                            <option value="7º Ano">7º Ano</option>
+                            <option value="8º Ano">8º Ano</option>
+                            <option value="9º Ano">9º Ano</option>
                         </select>
                     </div>
 
-                    <div class="container">
+                    <div class="container lista-contato">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="contacts">
@@ -72,14 +75,14 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="inputGroup-sizing-default">Telefone</span>
                                                 </div>
-                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="(xx) xxxx-xxxx">
+                                                <input type="text" class="form-control ipt-telefone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="(xx) xxxx-xxxx">
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="inputGroup-sizing-default">Nome do contato</span>
+                                                <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                            <input type="text" class="form-control ipt-contato" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                         </div>
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-success btn-add">+</button>
@@ -90,14 +93,14 @@
                         </div>
                     </div>
 
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3 ipt-data">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Data da entrevista</span>
                         </div>
                         <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
 
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3 ipt-escola">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Escola de origem</span>
                         </div>
@@ -105,14 +108,14 @@
                     </div>
 
 
-                    <div class="input-group">
+                    <div class="input-group ipt-motivo">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Motivo</span>
                         </div>
                         <textarea class="form-control" aria-label="With textarea"></textarea>
                     </div>
-                    
-                    <div class="input-group mb-3">
+
+                    <div class="input-group mb-3 ipt-boletim">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect01">Boletim</label>
                         </div>
@@ -122,13 +125,55 @@
                             <option value="comunidade">Não</option>
                         </select>
                     </div>
-                    
+                    <div class="ipt-disciplina"><a>Selecionar as disciplinas abaixo da média</a>
+                        <select id='callbacks' multiple='multiple'>
+                            <option value='elem_1'>elem 1</option>
+                            <option value='elem_2'>elem 2</option>
+                            <option value='elem_3'>elem 3</option>
+                            <option value='elem_4'>elem 4</option>
+                            <option value='elem_100'>elem 100</option>
+                        </select>
+                    </div>
+                    <div class="input-group ipt-talento">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Talento</span>
+                        </div>
+                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+
+                    <div class="input-group ipt-observacao">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Obsevações</span>
+                        </div>
+                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+
+                    <div class="input-group mb-3 ipt-situacao">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Situação</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>Selecione</option>
+                            <option value="industria">Matrícula Aprovada</option>
+                            <option value="comunidade">Esperar</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn btn-success btn-cadastrar">Cadastrar</button>
                 </fieldset>
             </section>
             <section class="principal" id="consultar">
                 <h2>Consultar</h2>
             </section>
         </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+        <script src="js/jquery.multi-select.js"></script>
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+            $('#callbacks').multiSelect();
+        </script>
     </body>
 
 </html>

@@ -1,0 +1,120 @@
+html{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    position: relative;
+}
+
+.principal{
+    position: relative;
+    background: white;
+    padding: 0;
+}
+
+#inserir{
+    background: white;
+    position: absolute;
+    width: 90%;
+    margin: 0px 2em;
+    padding: 1em;
+}
+
+body h2{
+    margin: 0px;
+    padding: .3em;
+    text-align: center;
+}
+
+#consultar{
+    display: none;
+}
+
+.ipt-nome{
+    width: 60em;
+    margin: 2em 2em 0em;
+}
+.ipt-convenio{
+    width: 15em;
+    margin: 0em 2em 0em;
+}
+.ipt-serie{
+    width: 15em;
+    margin: 0em 2em 0em;
+}
+
+.lista-contato{
+    margin: 0em 2em;
+    border: .5px solid black;
+    border-radius: 5px;
+    width: 30em;
+}
+
+.lista-contato .contacts{
+    width: 25em;
+}
+
+.ipt-data{
+    width: 21em;
+    margin: 1em 2em;
+}
+
+.ipt-escola{
+    width: 60em;
+    margin: 0em 2em;
+}
+
+.ipt-motivo{
+    width: 70em;
+    margin: 0em 2em;
+    height: 5em;
+}
+
+.ipt-boletim{
+    width: 15em;
+    margin: 1em 2em;
+}
+
+.ipt-disciplina{
+    width: 40em;
+    margin: 0em 2em;
+}
+
+.ipt-disciplina a{
+    text-align: center;
+    
+}
+
+.ms-container{
+    width: 30em;
+}
+
+.ms-selection .ms-list{
+    margin-left: 0em;
+    width: 15em;
+}
+.ms-selection .ms-list::before{
+    content: 'Disciplinas abaixo da média';
+}
+
+.ipt-talento{
+    width: 70em;
+    margin: 1em 2em;
+    height: 5em;
+}
+
+.ipt-observacao{
+    width: 70em;
+    margin: 1em 2em;
+    height: 5em;
+}
+
+.ipt-situacao{
+    margin: 0em 2em;
+    width: 30em;
+}
+
+.btn-cadastrar{
+    margin: 3em 50%;
+}
