@@ -8,6 +8,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
         <script src="js/extras.js"></script>
         <script src="js/jquery-3.4.1.js"></script>
         <script src="js/moment.js"></script>
@@ -55,13 +57,16 @@
                         </div>
                         <select class="custom-select" id="inputGroupSelect01">
                             <option selected>Selecione</option>
-                            <option value="1ª Série">1ª Série</option>
-                            <option value="2ª Série">2ª Série</option>
-                            <option value="3ª Série">3ª Série</option>
                             <option value="6º Ano">6º Ano</option>
                             <option value="7º Ano">7º Ano</option>
                             <option value="8º Ano">8º Ano</option>
                             <option value="9º Ano">9º Ano</option>
+                            <option value="1ª Série">1ª Série</option>
+                            <option value="2ª Série">2ª Série</option>
+                            <option value="3ª Série">3ª Série</option>
+                            <option value="1ª Série NEM">1ª Série NEM</option>
+                            <option value="2ª Série NEM">2ª Série NEM</option>
+                            <option value="3ª Série NEM">3ª Série NEM</option>
                         </select>
                     </div>
 
@@ -122,17 +127,36 @@
                         </div>
                         <select class="custom-select" id="inputGroupSelect01">
                             <option selected>Selecione</option>
-                            <option value="industria">Sim</option>
-                            <option value="comunidade">Não</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
                         </select>
                     </div>
                     <div class="ipt-disciplina"><a>Selecionar as disciplinas abaixo da média</a>
                         <select id='callbacks' multiple='multiple'>
-                            <option value='elem_1'>elem 1</option>
-                            <option value='elem_2'>elem 2</option>
-                            <option value='elem_3'>elem 3</option>
-                            <option value='elem_4'>elem 4</option>
-                            <option value='elem_100'>elem 100</option>
+                            <option value='Arte'>Arte</option>
+                            <option value='Biologia'>Biologia</option>
+                            <option value='Ciências'>Ciências</option>
+                            <option value='Ciências da Natureza'>Ciências da Natureza</option>
+                            <option value='Ciências Humanas'>Ciências Humanas</option>
+                            <option value='Educação Física'>Educação Física</option>
+                            <option value='Ensino Religioso'>Ensino Religioso</option>
+                            <option value='Espanhol'>Espanhol</option>
+                            <option value='Filosofia'>Filosofia</option>
+                            <option value='Física'>Física</option>
+                            <option value='Geografia'>Geografia</option>
+                            <option value='Geometria'>Geometria</option>
+                            <option value='História'>História</option>
+                            <option value='Inglês'>Inglês</option>
+                            <option value='Língua Portuguesa'>Língua Portuguesa</option>
+                            <option value='Literatura'>Literatura</option>
+                            <option value='Leitura e Escrita'>Leitura e Escrita</option>
+                            <option value='Matemática'>Matemática</option>
+                            <option value='Matemática Aplicada'>Matemática Aplicada</option>
+                            <option value='Mundo do Trabalho'>Mundo do Trabalho</option>
+                            <option value='Química'>Química</option>
+                            <option value='Redação'>Redação</option>
+                            <option value='Robótica'>Robótica</option>
+                            <option value='Sociologia'>Sociologia</option>
                         </select>
                     </div>
                     <div class="input-group ipt-talento">
@@ -154,9 +178,10 @@
                             <label class="input-group-text" for="inputGroupSelect01">Situação</label>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01">
-                            <option selected>Selecione</option>
-                            <option value="industria">Matrícula Aprovada</option>
-                            <option value="comunidade">Esperar</option>
+                            <option value="N/A">N/A</option>
+                            <option value="Matrícula Autorizada">Matrícula Autorizada</option>
+                            <option value="Não temos vaga">Não temos vaga</option>
+                            <option value="Continuar aguardando vaga">Continuar aguardando vaga</option>
                         </select>
                     </div>
 
@@ -165,6 +190,14 @@
             </section>
             <section class="principal" id="consultar">
                 <h2>Consultar</h2>
+                <fieldset>
+                    <table id="tabela-agenda" class="table table-hover">
+                        <thead class="thead-dark">
+                            <th>Nome<input class="form-control" id="ipt-consulta-nome" type="text" placeholder="Pesquisar"></th>
+                            <th>Série</th><th>Data</th><th>Convênio</th><th>Escola de Origem</th><th>Situação</th>
+                        </thead>
+                    </table>
+                </fieldset>
             </section>
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -174,6 +207,7 @@
                 <script type="text/javascript">
             $('#callbacks').multiSelect();
         </script>
+        <script src="js/jquery.mask.js"></script>
         <script src="js/main.js"></script>
     </body>
 

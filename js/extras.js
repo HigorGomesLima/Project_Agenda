@@ -54,6 +54,6 @@
         $(document).on('click', '.btn-add', addFormGroup);
         $(document).on('click', '.btn-remove', removeFormGroup);
         $(document).on('click', '.dropdown-menu a', selectFormGroup);
-
+        $()
     });
 })(jQuery);
