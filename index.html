@@ -121,6 +121,13 @@
                         <textarea class="form-control" aria-label="With textarea"></textarea>
                     </div>
 
+                    <div class="input-group ipt-talento">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Talento</span>
+                        </div>
+                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+
                     <div class="input-group mb-3 ipt-boletim">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect01">Boletim</label>
@@ -131,6 +138,7 @@
                             <option value="Não">Não</option>
                         </select>
                     </div>
+
                     <div class="ipt-disciplina"><a>Selecionar as disciplinas abaixo da média</a>
                         <select id='callbacks' multiple='multiple'>
                             <option value='Arte'>Arte</option>
@@ -158,12 +166,6 @@
                             <option value='Robótica'>Robótica</option>
                             <option value='Sociologia'>Sociologia</option>
                         </select>
-                    </div>
-                    <div class="input-group ipt-talento">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Talento</span>
-                        </div>
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
                     </div>
 
                     <div class="input-group ipt-observacao">
@@ -194,8 +196,47 @@
                     <table id="tabela-agenda" class="table table-hover">
                         <thead class="thead-dark">
                             <th>Nome<input class="form-control" id="ipt-consulta-nome" type="text" placeholder="Pesquisar"></th>
-                            <th>Série</th><th>Data</th><th>Convênio</th><th>Escola de Origem</th><th>Situação</th>
+                            <th>Ano/Série
+                                <select class="custom-select custom-select-sm">
+                                    <option selected>Pesquisar</option>
+                                    <option value="6º Ano">6º Ano</option>
+                                    <option value="7º Ano">7º Ano</option>
+                                    <option value="8º Ano">8º Ano</option>
+                                    <option value="9º Ano">9º Ano</option>
+                                    <option value="1ª Série">1ª Série</option>
+                                    <option value="2ª Série">2ª Série</option>
+                                    <option value="3ª Série">3ª Série</option>
+                                    <option value="1ª Série NEM">1ª Série NEM</option>
+                                    <option value="2ª Série NEM">2ª Série NEM</option>
+                                    <option value="3ª Série NEM">3ª Série NEM</option>
+                                </select>
+                            </th>
+                            <th>Data
+                                <select class="custom-select custom-select-sm">
+                                    <option selected>Ordenar</option>
+                                    <option value="Novo">Mais recente</option>
+                                    <option value="Antigo">Mais antigo</option>
+                                </select>
+                            </th>
+                            <th>Convênio
+                                <select class="custom-select custom-select-sm">
+                                    <option selected>Pesquisar</option>
+                                    <option value="Indústria">Indústria</option>
+                                    <option value="Comunidade">Comunidade</option>
+                                </select>
+                            </th><th>Escola de Origem<input class="form-control" id="ipt-consulta-escola" type="text" placeholder="Pesquisar"></th>
+                            <th>Situação
+                                <select class="custom-select custom-select-sm">
+                                    <option selected>Pesquisar</option>
+                                    <option value="N/A">N/A</option>
+                                    <option value="Matrícula Autorizada">Matrícula Autorizada</option>
+                                    <option value="Não temos vaga">Não temos vaga</option>
+                                    <option value="Continuar aguardando vaga">Continuar aguardando vaga</option>
+                                </select>
+                            </th>
                         </thead>
+                        <tbody>
+                        </tbody>
                     </table>
                 </fieldset>
             </section>
@@ -204,7 +245,7 @@
         <!-- Bootstrap JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
         <script src="js/jquery.multi-select.js"></script>
-                <script type="text/javascript">
+        <script type="text/javascript">
             $('#callbacks').multiSelect();
         </script>
         <script src="js/jquery.mask.js"></script>

@@ -28,6 +28,7 @@ body{
     width: 90%;
     margin: 0px 2em;
     padding: 1em;
+    //display: none;
 }
 
 body h2{
@@ -39,6 +40,9 @@ body h2{
 .ipt-nome{
     width: 60em;
     margin: 2em 2em 0em;
+}
+
+.ipt-nome input{
     text-transform: uppercase;
 }
 .ipt-convenio{
@@ -125,7 +129,54 @@ body h2{
     margin: 3em 50%;
 }
 /*Consulta*/
-#tabela-agenda thead input{
+
+#tabela-agenda thead th{
+    padding: .5em;
+}
+#ipt-consulta-nome{
     display: inline-block;
     height: 2em;
+    text-transform: uppercase;
+    width: 21em;
+}
+
+#tabela-agenda thead th:nth-child(1){
+    width: 22em;
+}
+
+#tabela-agenda thead th:nth-child(2){
+    width: 10em;
+}
+
+#tabela-agenda thead th:nth-child(2) select{
+    display: inline-block;
+}
+
+#tabela-agenda thead th:nth-child(3){
+    width: 10em;
+}
+
+#tabela-agenda thead th:nth-child(3) select{
+    display: inline-block;
+}
+
+#tabela-agenda thead th:nth-child(4){
+    width: 10em;
+}
+
+#tabela-agenda thead th:nth-child(4) select{
+    display: inline-block;
+}
+
+#tabela-agenda thead th:nth-child(5){
+    width: 20em;
+}
+#ipt-consulta-escola{
+    display: inline-block;
+    height: 2em;
+    width: 22em;
+}
+
+#tabela-agenda thead th:nth-child(6){
+    width: 15em;
 }

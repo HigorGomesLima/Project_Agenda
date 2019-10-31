@@ -1,3 +1,6 @@
+var id = '';
+var listaAgenda;
+
 (function init(){
     novaFicha();
     const firebaseConfig = {
@@ -11,6 +14,10 @@
         measurementId: "G-9RG9CXD48X"
     };
     firebase.initializeApp(firebaseConfig);
+    getListaEntrevista().then(function (lista){
+        listaAgenda = lista;
+        gerarTebela();
+    });
 })();
 
 function novaFicha(){
@@ -30,7 +37,7 @@ function novaFicha(){
 }
 
 $(".btn-cadastrar").click(function (){
-    let nome = $(".ipt-nome input").val()toUpperCase();
+    let nome = $(".ipt-nome input").val().toUpperCase();
     let convenio = $(".ipt-convenio select").val();
     let serie = $(".ipt-serie select").val();
     let contatos = [];
@@ -68,17 +75,65 @@ $(".btn-cadastrar").click(function (){
         observacao: observacao,
         situacao: situacao
     }
-    //setCandidato(candidato);
-    console.log(candidato);
+    setCandidato(candidato);
 });
 
 function setCandidato(dados){
     let db = firebase.firestore();
-    db.collection('candidato').add(dados)
-    .then(function (doc) {
-        console.log(doc.id);
+    if(id == ''){
+        db.collection('candidato').add(dados)
+            .then(function (doc) {
+            console.log(doc.id);
+            id = doc.id;
+        })
+            .catch(function (erro){
+            console.log(erro);
+        });
+    }else{
+        db.collection('candidato').doc(id).set(dados)
+            .then(function (doc) {
+            console.log("Alterados os dados de: "+id);
+        })
+            .catch(function (erro){
+            console.log(erro);
+        });
+    }
+}
+
+function getListaEntrevista(){
+    let db = firebase.firestore();
+    return db.collection('candidato').get()
+        .then(function (snap){
+        let listacandidato = [];
+        snap.forEach(function (doc){
+            let candidato = {
+                nome: doc.data().nome,
+                convenio: doc.data().convenio,
+                serie: doc.data().serie,
+                contatos: doc.data().contatos,
+                data: doc.data().data,
+                escola: doc.data().escola,
+                motivo: doc.data().motivo,
+                boletim: doc.data().boletim,
+                disciplinas: doc.data().disciplinas,
+                talento: doc.data().talento,
+                observacao: doc.data().observacao,
+                situacao: doc.data().situacao
+                }
+            listacandidato.push(candidato);
+            });
+        return listacandidato;
     })
     .catch(function (erro){
-        console.log(erro);
+        console.log("Erro "+erro);
     })
+}
+
+function gerarTebela(){
+    let tabela = $('#tabela-agenda tbody');
+    if(listaAgenda.length > 0){
+        listaAgenda.forEach((stl) => {
+            tabela.append("<tr><td>"+stl.nome+"</td><td>"+stl.serie+"</td><td>"+stl.data+"</td><td>"+stl.convenio+"</td><td>"+stl.escola+"</td><td>"+stl.situacao+"</td></tr>");
+        });
+    }
 }
