@@ -13,13 +13,20 @@ body{
     padding: 0;
 }
 
+.nav-link{
+    cursor: pointer;
+}
+
+.nav-tabs .active{
+    font-weight: bold;
+}
+
 #inserir{
     background: white;
     position: absolute;
     width: 90%;
     margin: 0px 2em;
     padding: 1em;
-    display: none;
 }
 
 #consultar{
@@ -28,7 +35,7 @@ body{
     width: 90%;
     margin: 0px 2em;
     padding: 1em;
-    //display: none;
+    display: none;
 }
 
 body h2{

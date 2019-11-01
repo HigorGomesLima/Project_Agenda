@@ -1,5 +1,6 @@
 var id = '';
 var listaAgenda;
+var opcao = 'Inserir';
 
 (function init(){
     novaFicha();
@@ -18,6 +19,7 @@ var listaAgenda;
         listaAgenda = lista;
         gerarTebela();
     });
+    $(".nav-link").bind('click',trocarTab);
 })();
 
 function novaFicha(){
@@ -34,6 +36,17 @@ function novaFicha(){
     $(".ipt-situacao select").val('N/A');
     $("#callbacks").multiSelect('deselect_all');
     $(".detalhe-contato").load(location.href + " .detalhe-contato");
+}
+
+function trocarTab(){
+    if($(this).html() != opcao){
+        opcao = $(this).html();
+        $(".nav-item .active").removeClass("active");
+        $(this).addClass("active");
+        $("#consultar").fadeToggle('fast');
+        $("#inserir").fadeToggle('fast');
+    }
+    console.log($(this).html());
 }
 
 $(".btn-cadastrar").click(function (){
@@ -107,6 +120,7 @@ function getListaEntrevista(){
         let listacandidato = [];
         snap.forEach(function (doc){
             let candidato = {
+                id: doc.id,
                 nome: doc.data().nome,
                 convenio: doc.data().convenio,
                 serie: doc.data().serie,
@@ -120,7 +134,7 @@ function getListaEntrevista(){
                 observacao: doc.data().observacao,
                 situacao: doc.data().situacao
                 }
-            listacandidato.push(candidato);
+            listacandidato[doc.id] = candidato;
             });
         return listacandidato;
     })
@@ -133,7 +147,23 @@ function gerarTebela(){
     let tabela = $('#tabela-agenda tbody');
     if(listaAgenda.length > 0){
         listaAgenda.forEach((stl) => {
-            tabela.append("<tr><td>"+stl.nome+"</td><td>"+stl.serie+"</td><td>"+stl.data+"</td><td>"+stl.convenio+"</td><td>"+stl.escola+"</td><td>"+stl.situacao+"</td></tr>");
+            tabela.append("<tr value='"+stl.id+"'><td>"+stl.nome+"</td><td>"+stl.serie+"</td><td>"+stl.data+"</td><td>"+stl.convenio+"</td><td>"+stl.escola+"</td><td>"+stl.situacao+"</td></tr>");
         });
     }
+}
+
+function editarCandidato(){
+    let ida = $(this).val();
+    $(".ipt-nome input").val(listaAgenda[ida].nome);
+    $(".ipt-data input").val(listaAgenda[ida].data);
+    $(".ipt-escola input").val(listaAgenda[ida].escola);
+    $(".ipt-motivo textarea").val(listaAgenda[ida].motivo);
+    $(".ipt-boletim select").val(listaAgenda[ida].boletim);
+    let disciplinas = [];
+    /*$(".ms-selection .ms-list .ms-selected span").each(function (){
+        disciplinas.push(this.innerText);
+    });*/
+    $(".ipt-talento textarea").val(listaAgenda[ida].talento);
+    $(".ipt-observacao textarea").val(listaAgenda[ida].observacao);
+    $(".ipt-situacao select").val(listaAgenda[ida].situacao);
 }
