@@ -1,10 +1,59 @@
 html{
     padding: 0;
     margin: 0;
+    position: relative;
 }
 
 body{
     position: relative;
+}
+
+.fundo{
+    background: red;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: white;
+    opacity: 0.5;
+    z-index: 100;
+    display: none;
+}
+
+.spinner-border{
+    position: fixed;
+    margin: 20% 45%;
+    z-index: 102;
+    width: 3rem; 
+    height: 3rem;
+    display: none;
+}
+
+.tela-dialog{
+    padding: 1em;
+    position: fixed;
+    z-index: 101;
+    background: #ccc;
+    top: 40%;
+    left: 40%;
+    border-radius: 5px;
+    box-shadow: 2px 2px #777;
+    display: none;
+}
+
+.tela-dialog div{
+    margin: 1em 2em;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.tela-dialog div button{
+    margin-left: 1em;
+    width: auto;
+}
+
+#novo-cadastro{
+    display: none;
 }
 
 .principal{
@@ -36,6 +85,7 @@ body{
     margin: 0px 2em;
     padding: 1em;
     display: none;
+    position: relative;
 }
 
 body h2{
@@ -133,7 +183,14 @@ body h2{
 }
 
 .btn-cadastrar{
-    margin: 3em 50%;
+    margin-top: 2em;
+    margin-left: 40%;
+    display: inline-block;
+}
+
+.btn-limpar{
+    margin-top: 2em;
+    margin-left: 5em;
 }
 /*Consulta*/
 
@@ -186,4 +243,86 @@ body h2{
 
 #tabela-agenda thead th:nth-child(6){
     width: 15em;
+}
+
+#informacao{
+    position: fixed;
+    z-index: 101;
+    background: #ccc;
+    width: 70%;
+    margin: 0px 10%;
+    border-radius: 5px;
+    box-shadow: 2px 2px #999;
+    padding: .5em;
+    top: 7%;
+    display: none;
+}
+
+#informacao div #bnt-fechar{
+    position: absolute;
+    background: white;
+    right: 0;
+    top: 0;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    border-radius: 50%;
+    cursor: default;
+    font-weight: bold;
+    transition: all .2s;
+}
+
+#informacao div #bnt-fechar:hover{
+    box-shadow: 2px 2px black;
+    width: 1.7em;
+    height: 1.7em;
+}
+
+#informacao label{
+    font-weight: bold;
+    padding: .2em;
+    margin: 0px;
+}
+
+#informacao label a{
+    font-weight: normal;
+    margin-left: .5em;
+}
+
+#informacao label:nth-child(2){
+    display: block;
+}
+
+#informacao label:nth-child(4){
+    margin-left: 30%;
+}
+
+#informacao label:nth-child(5){
+    display: block;
+}
+
+#informacao label ul li{
+    font-weight: normal;
+    list-style: none;
+}
+
+#informacao label div{
+    height: 7em;
+    overflow-y: auto;
+}
+
+#informacao label:nth-child(6){
+    display: block;
+}
+
+#informacao label:nth-child(7){
+    display: block;
+}
+
+#informacao label:nth-child(9),#informacao label:nth-child(10),#informacao label:nth-child(11),#informacao label:nth-child(12){
+    display: block;
+}
+
+#btn-editar{
+    margin: .5em 47%;
 }

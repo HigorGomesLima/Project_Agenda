@@ -19,7 +19,39 @@
 
     <body>
         <header>
-            <div id="top"></div>
+            <div class="fundo"></div>
+            <div class="tela-dialog" id="novo-cadastro">
+                <a>Dados inseridos com sucesso<br>
+                    Id : <span>0</span>
+                </a>
+                <div>
+                    <button type="button" class="btn btn-success btn-novo">Novo</button>
+                    <button type="button" class="btn btn-primary btn-editar">Editar</button>
+                </div>
+            </div>
+            <div class="tela-dialog" id="confirmar-edicao">
+                <a>Confirmar alteração dos dados<br>
+                    Id: <span>0</span><br>
+                    Nome: <span>0</span>
+                </a>
+                <div>
+                    <button type="button" class="btn btn-success btn-sim">Sim</button>
+                    <button type="button" class="btn btn-danger btn-nao">Não</button>
+                </div>
+            </div>
+            
+            <div class="tela-dialog" id="confirmar-limpeza">
+                <a>Deseja apagar os dados preenchidos?</a>
+                <div>
+                    <button type="button" class="btn btn-success btn-sim">Sim</button>
+                    <button type="button" class="btn btn-danger btn-nao">Não</button>
+                </div>
+            </div>
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div id="top">
+            </div>
             <nav>
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -188,6 +220,7 @@
                     </div>
 
                     <button type="button" class="btn btn-success btn-cadastrar">Cadastrar</button>
+                    <button type="button" class="btn btn-warning btn-danger btn-limpar">Limpar</button>
                 </fieldset>
             </section>
             <section class="principal" id="consultar">
@@ -238,6 +271,25 @@
                         <tbody>
                         </tbody>
                     </table>
+                </fieldset>
+                <fieldset id="informacao">
+                    <div>
+                        <div id="bnt-fechar">X</div>
+                        <label>Nome<a name='nome'>José das Colves</a><label>Série/Ano<a name='serie'>A</a></label></label>
+                        <label>Convênio<a name='convenio'></a></label>
+                        <label>Data<a name='data'></a></label>
+                        <label>Contatos<ul name='contato'>
+                            <li>(62) 9999-9999  -  Alguem</li><li>(62) 9999-9999  -  Dois</li></ul></label>
+                        <label>Escola de origem<a name='escola'></a></label>
+                        <label>Boletim<a name='boletim'></a></label>
+                        <label>Notas abaixo da média<div><ul name='disciplina'>
+                            <li>Matemática</li><li>Geografia</li></ul></div></label>
+                        <label>Motivo<a name='motivo'></a></label>
+                        <label>Talento<a name='talento'></a></label>
+                        <label>Observação<a name='observacao'></a></label>
+                        <label>Situação<a name='situacao'></a></label>
+                        <button type="button" class="btn btn-primary" id="btn-editar">Editar</button>
+                    </div>
                 </fieldset>
             </section>
         </main>
