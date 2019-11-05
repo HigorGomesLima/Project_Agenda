@@ -33,11 +33,13 @@ var autorizado = false;
     $(".btn-cadastrar").bind('click',cadastroCandidato);
     $("#tabela-agenda th input").bind('keyup',filtroTabela);
     $("#tabela-agenda th select:not([name='data'])").bind('change',filtroTabela);
-    $("#tabela-agenda th select[name='data']").bind('change',ordemTabela);
 })();
 
 function carregarListaDocumentos(){
     if(listaAgenda == undefined){
+        $(".fundo").fadeIn('fast');
+        $(".spinner-border").fadeIn('fast');
+        carregado = false;
         console.log("Banco de dados consultado");
         listaAgenda = {};
         let db = firebase.firestore();
@@ -62,6 +64,7 @@ function carregarListaDocumentos(){
                 listaAgenda[candidato.id] = candidato;
                 if(carregado){
                     gerarTebela(true);
+                    ordemDecrescente();
                 }
             })
         });
@@ -69,6 +72,8 @@ function carregarListaDocumentos(){
             if(Object.entries(listaAgenda).length > 0){
                 gerarTebela(true);
                 carregado = true;
+                $(".fundo").fadeOut('fast');
+                $(".spinner-border").fadeOut('fast');
             }else{
                 setTimeout(time,500);
             }
@@ -233,32 +238,62 @@ function filtroTabela(){
     })
 }
 
-function ordemTabela(){
-    let texto = $(this).val().toUpperCase();
-    let lista = Object.entries(listaAgenda);
-    if(texto == 'MAIS RECENTE'){
-        lista.sort(function (A,B){
-            if(A[1].data < B[1].data){
-                return -1;
-            }else if(A[1].data > B[1].data){
-                return 1;
-            }else{
-                return 0;
-            }
-        });
-        gerarTebela(true);
-    }else if(texto == 'MAIS ANTIGO'){
-        lista.sort(function (A,B){
-            if(A[1].data < B[1].data){
-                return 1;
-            }else if(A[1].data > B[1].data){
-                return -1;
-            }else{
-                return 0;
-            }
-        })
-        gerarTebela(true);
+$("#tabela-agenda th select[name='data']").change(function (){
+    if($(this).val() == "Novo"){
+        ordemDecrescente();
+    }else{
+        ordemCrescente();
     }
+})
+
+function ordemCrescente(){
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("tabela-agenda");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].querySelector("td[name='data']");
+      y = rows[i + 1].querySelector("td[name='data']");
+        a = x.innerHTML.toLowerCase();
+        b = y.innerHTML.toLowerCase();
+      if (a > b) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+function ordemDecrescente(){
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("tabela-agenda");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].querySelector("td[name='data']");
+      y = rows[i + 1].querySelector("td[name='data']");
+        a = x.innerHTML.toLowerCase();
+        b = y.innerHTML.toLowerCase();
+      if (a < b) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
 }
 
 function setCandidato(dados){

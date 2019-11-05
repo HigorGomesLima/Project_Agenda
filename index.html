@@ -19,7 +19,8 @@
 
     <body>
         <header>
-            <div class="fundo"></div>
+            <div class="fundo">
+            </div>
             <div class="tela-dialog" id="novo-cadastro">
                 <a>Dados inseridos com sucesso<br>
                     Id : <span>0</span>
@@ -51,6 +52,9 @@
                 <span class="sr-only">Loading...</span>
             </div>
             <div id="top">
+                <img src="img/marca.png">
+                <h2>ESCOLA SESI CAMPINAS</h2>
+                <h4>INTERESSE DE VAGA - ENTREVISTA COM PAIS E ESTUDANTE</h4>
             </div>
             <nav>
                 <ul class="nav nav-tabs">
@@ -113,14 +117,14 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="inputGroup-sizing-default">Telefone</span>
                                                 </div>
-                                                <input type="text" class="form-control ipt-telefone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="(xx) xxxx-xxxx">
+                                                <input type="text" class="form-control ipt-telefone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Telefone de contato">
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
                                             </div>
-                                            <input type="text" class="form-control ipt-contato" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                            <input type="text" class="form-control ipt-contato" placeholder="Nome do contato" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                         </div>
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-success btn-add">+</button>
@@ -142,7 +146,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Escola de origem</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nome da escola antiga">
                     </div>
 
 
@@ -150,14 +154,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Motivo</span>
                         </div>
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                        <textarea class="form-control" aria-label="With textarea" placeholder="Descrever os motivos"></textarea>
                     </div>
 
                     <div class="input-group ipt-talento">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Talento</span>
                         </div>
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                        <textarea class="form-control" aria-label="With textarea" placeholder="Descrever os talentos apresentados"></textarea>
                     </div>
 
                     <div class="input-group mb-3 ipt-boletim">
@@ -204,7 +208,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Obsevações</span>
                         </div>
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                        <textarea class="form-control" aria-label="With textarea" placeholder="Descrever qualquer outra informação relevante"></textarea>
                     </div>
 
                     <div class="input-group mb-3 ipt-situacao">
@@ -246,7 +250,6 @@
                             </th>
                             <th>Data
                                 <select class="custom-select custom-select-sm" name='data'>
-                                    <option selected>Ordenar</option>
                                     <option value="Novo">Mais recente</option>
                                     <option value="Antigo">Mais antigo</option>
                                 </select>

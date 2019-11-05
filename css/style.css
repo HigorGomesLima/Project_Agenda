@@ -52,6 +52,23 @@ body{
     width: auto;
 }
 
+#top img{
+    padding: 1em;
+    width: 11em;
+}
+
+#top h2{
+    display: inline-block;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 0px 20%;
+}
+
+#top h4{
+    margin: 0px 27%;
+    font-size: 1.3em;
+}
+
 #novo-cadastro{
     display: none;
 }
