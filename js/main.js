@@ -31,6 +31,9 @@ var autorizado = false;
     $(".nav-link").bind('click',trocarTab);
     $("#btn-editar").bind('click',editarCandidato);
     $(".btn-cadastrar").bind('click',cadastroCandidato);
+    $("#tabela-agenda th input").bind('keyup',filtroTabela);
+    $("#tabela-agenda th select:not([name='data'])").bind('change',filtroTabela);
+    $("#tabela-agenda th select[name='data']").bind('change',ordemTabela);
 })();
 
 function carregarListaDocumentos(){
@@ -214,6 +217,50 @@ $("#confirmar-limpeza .btn-nao").click(function(){
     $(".fundo").fadeOut("fast");
 })
 
+function filtroTabela(){
+    let texto = $(this).val().toUpperCase();
+    if(texto == 'TODAS' || texto == 'PESQUISAR' || texto == 'TODOS'){
+        texto = '';
+    }
+    let name = $(this).attr('name');
+    let linhas = $("#tabela-agenda tbody td[name='"+name+"']");
+    linhas.each((index,stl) => {
+        if(stl.textContent.toUpperCase().indexOf(texto) > -1){
+            $(stl).parent().fadeIn('fast');
+        }else{
+            $(stl).parent().fadeOut('fast');
+        }
+    })
+}
+
+function ordemTabela(){
+    let texto = $(this).val().toUpperCase();
+    let lista = Object.entries(listaAgenda);
+    if(texto == 'MAIS RECENTE'){
+        lista.sort(function (A,B){
+            if(A[1].data < B[1].data){
+                return -1;
+            }else if(A[1].data > B[1].data){
+                return 1;
+            }else{
+                return 0;
+            }
+        });
+        gerarTebela(true);
+    }else if(texto == 'MAIS ANTIGO'){
+        lista.sort(function (A,B){
+            if(A[1].data < B[1].data){
+                return 1;
+            }else if(A[1].data > B[1].data){
+                return -1;
+            }else{
+                return 0;
+            }
+        })
+        gerarTebela(true);
+    }
+}
+
 function setCandidato(dados){
     let db = firebase.firestore();
     if(id == ''){
@@ -278,7 +325,7 @@ function gerarTebela(limpar){
     }
     if(Object.entries(listaAgenda).length != undefined){
         Object.entries(listaAgenda).forEach((stl) => {
-            tabela.append("<tr class='linha' value='"+stl[0]+"'><td>"+stl[1].nome+"</td><td>"+stl[1].serie+"</td><td>"+stl[1].data+"</td><td>"+stl[1].convenio+"</td><td>"+stl[1].escola+"</td><td>"+stl[1].situacao+"</td></tr>");
+            tabela.append("<tr class='linha' value='"+stl[0]+"'><td name='nome'>"+stl[1].nome+"</td><td name='serie'>"+stl[1].serie+"</td><td name='data'>"+stl[1].data+"</td><td name='convenio'>"+stl[1].convenio+"</td><td name='escola'>"+stl[1].escola+"</td><td name='situacao'>"+stl[1].situacao+"</td></tr>");
             $("#tabela-agenda tbody .linha").bind('click',showCandidato);
         });
     }

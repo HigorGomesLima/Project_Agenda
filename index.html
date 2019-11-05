@@ -228,10 +228,10 @@
                 <fieldset>
                     <table id="tabela-agenda" class="table table-hover">
                         <thead class="thead-dark">
-                            <th>Nome<input class="form-control" id="ipt-consulta-nome" type="text" placeholder="Pesquisar"></th>
+                            <th>Nome<input class="form-control" id="ipt-consulta-nome" name='nome' type="text" placeholder="Pesquisar"></th>
                             <th>Ano/Série
-                                <select class="custom-select custom-select-sm">
-                                    <option selected>Pesquisar</option>
+                                <select class="custom-select custom-select-sm" name='serie'>
+                                    <option selected>Todas</option>
                                     <option value="6º Ano">6º Ano</option>
                                     <option value="7º Ano">7º Ano</option>
                                     <option value="8º Ano">8º Ano</option>
@@ -245,22 +245,22 @@
                                 </select>
                             </th>
                             <th>Data
-                                <select class="custom-select custom-select-sm">
+                                <select class="custom-select custom-select-sm" name='data'>
                                     <option selected>Ordenar</option>
                                     <option value="Novo">Mais recente</option>
                                     <option value="Antigo">Mais antigo</option>
                                 </select>
                             </th>
                             <th>Convênio
-                                <select class="custom-select custom-select-sm">
-                                    <option selected>Pesquisar</option>
+                                <select class="custom-select custom-select-sm" name='convenio'>
+                                    <option selected>Todos</option>
                                     <option value="Indústria">Indústria</option>
                                     <option value="Comunidade">Comunidade</option>
                                 </select>
-                            </th><th>Escola de Origem<input class="form-control" id="ipt-consulta-escola" type="text" placeholder="Pesquisar"></th>
+                            </th><th>Escola de Origem<input class="form-control" id="ipt-consulta-escola" name='escola' type="text" placeholder="Pesquisar"></th>
                             <th>Situação
-                                <select class="custom-select custom-select-sm">
-                                    <option selected>Pesquisar</option>
+                                <select class="custom-select custom-select-sm" name='situacao'>
+                                    <option selected>Todas</option>
                                     <option value="N/A">N/A</option>
                                     <option value="Matrícula Autorizada">Matrícula Autorizada</option>
                                     <option value="Não temos vaga">Não temos vaga</option>
